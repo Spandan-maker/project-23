@@ -33,7 +33,7 @@ function setup() {
 	engine = Engine.create();
 	world = engine.world;
 
-	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution: 0.7, isStatic:true});
+	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution: 0, isStatic:true});
 	World.add(world, packageBody);
 	
 
@@ -54,25 +54,23 @@ function setup() {
 function draw() {
 	rectMode(CENTER);
   	background(0);
-  
-  	packageSprite.x= packageBody.position.x 
-  	packageSprite.y= packageBody.position.y 
-  
+	
 	rod1.display();
 	rod2.display();
 	rod3.display();
 
-  	keyPressed();
+  	packageSprite.x= packageBody.position.x 
+  	packageSprite.y= packageBody.position.y 
 
-  	drawSprites();
+  	keyPressed();
+	  
+	drawSprites();
  
 }
 
 function keyPressed() {
  if (keyCode === DOWN_ARROW) {
-    Matter.Body.setStatic(packageBody,false);
+	Matter.Body.setStatic(packageBody,false);
   }
 }
-
-
 
